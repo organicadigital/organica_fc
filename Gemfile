@@ -9,6 +9,8 @@ gem 'pg'
 gem 'slim-rails'
 gem 'devise'
 
+gem 'rails_12factor'
+
 group :assets do
   gem 'sass-rails', '~> 4.0.3'
   gem 'jquery-rails'
