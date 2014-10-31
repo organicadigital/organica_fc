@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    attributes:
+      game:
+        home_player_id: Jogador Casa
+        away_player_id: Jogador Fora
+
+  errors:
+    messages:
+      is_equal: "é igual ao Jogador Fora"

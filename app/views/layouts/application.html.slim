@@ -1,0 +1,20 @@
+doctype 5
+html lang="#{I18n.locale}"
+  head
+    title Orgânica F.C
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body
+    .container
+      - if player_signed_in?
+        .row
+          .col-xs-6.col-xs-offset-3
+            .btn-group
+              = link_to "Classificação", {action: :index}, class: "btn btn-default"
+              = link_to "Jogos", {action: :games}, class: "btn btn-default"
+            br
+            br
+
+      = yield

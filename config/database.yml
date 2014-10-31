@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  host: localhost
+  pool: 5
+
+development:
+  <<: *default
+  database: organica_fc_development
+
+test:
+  <<: *default
+  database: organica_fc_test
+
+production:
+  <<: *default
+  database: organica_fc_production
+  username: organica_fc
+  password: <%= ENV['ORGANICA_FC_DATABASE_PASSWORD'] %>

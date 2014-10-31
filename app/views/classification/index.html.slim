@@ -1,0 +1,28 @@
+.panel.col-xs-6.col-xs-offset-3
+  .panel-heading
+    .panel-title Classificação
+  .panel-body
+    table.table.table-stripped
+      thead
+        tr
+          th Jogador
+          th P
+          th J
+          th V
+          th E
+          th D
+          th GP
+          th GC
+          th SG
+      tbody
+        - @scores.each do |s|
+          tr
+            td = s.player.email
+            td = s.points
+            td = s.games
+            td = s.wins
+            td = s.draws
+            td = s.loses
+            td = s.gp
+            td = s.gc
+            td = s.gp - s.gc

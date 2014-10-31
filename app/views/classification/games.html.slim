@@ -1,0 +1,21 @@
+.panel.col-xs-6.col-xs-offset-3
+  .panel-heading
+    .panel-title Jogos
+  .panel-body
+    table.table.table-stripped
+      tbody
+        - @games_table.all.each do |table_result|
+          tr
+            td.text-right = table_result.home_player.email
+            td = table_result.result.try(:home_goals)
+            td
+              - unless table_result.result.present?
+                = link_to "X", action: :new, game: {home_player_id: table_result.home_player.id,
+                                                    away_player_id: table_result.away_player.id}
+              - else
+               | X
+
+
+            td = table_result.result.try(:away_goals)
+
+            td.text-left = table_result.away_player.email
