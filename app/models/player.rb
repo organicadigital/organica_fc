@@ -15,11 +15,11 @@ class Player < ActiveRecord::Base
                                        away_games: :home_player) }
 
   def acronym
-    @acronym ||= (name.blank? ? email : name)[0..2].upcase
+    @acronym ||= email[0..2].upcase
   end
 
   def to_s
-    @to_s ||= [email, name].reject(&:blank?).join(" - ")
+    @to_s ||= email
   end
 
   private
