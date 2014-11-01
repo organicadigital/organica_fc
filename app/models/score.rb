@@ -4,4 +4,8 @@ class Score < ActiveRecord::Base
   validates :player_id, presence: true
 
   scope :sorted, lambda { order(points: :desc, wins: :desc).order("(gp - gc) desc") }
+
+  def sg
+    @sg ||= gp - gc
+  end
 end

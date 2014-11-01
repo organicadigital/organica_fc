@@ -5,8 +5,16 @@ class GamesTable
     @games = Game.all
   end
 
+  def home_games
+    @home_games ||= @players.combination(2).to_a
+  end
+
+  def away_games
+    @away_games ||= @players.reverse.combination(2).to_a
+  end
+
   def all
-    @all ||= @players.combination(2).to_a.map do |arr|
+    @all ||= (home_games + away_games).map do |arr|
 
       OpenStruct.new home_player: arr[0],
                      away_player: arr[1],

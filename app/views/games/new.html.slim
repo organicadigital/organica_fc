@@ -2,7 +2,7 @@
   .panel-heading
     .panel-title Novo jogo
   .panel-body
-    = form_for(@game, url: {action: :create}) do |f|
+    = form_for(@game, url: new_game_path) do |f|
       - if @game.errors.any?
         p.alert.alert-danger
           = raw @game.errors.full_messages.join("<br/>")
@@ -17,6 +17,6 @@
             td.text-center = f.text_field :home_goals, class: "text-center"
             td.text-center = f.text_field :away_goals, class: "text-center"
 
-      = f.submit "Salvar", class: "btn btn-success"
-      | &nbsp;
-      = link_to "Cancelar", action: :games
+      = f.submit "Salvar", class: "btn btn-default"
+      | &nbsp;&nbsp;
+      = link_to "Cancelar", games_path

@@ -3,11 +3,9 @@ Rails.application.routes.draw do
 
   root to: "classification#index"
 
-  # get "/games", controller: :classification, action: :games
-
-  controller :classification do
-    get "/games", action: :games
-    get "/games/new", action: :new
-    post "/games/new", action: :create
+  controller :games, path: "/games" do
+    get "/", action: :index, as: :games
+    get "/new", action: :new, as: :new_game
+    post "/new", action: :create, as: false
   end
 end

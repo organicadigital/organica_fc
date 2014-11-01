@@ -1,8 +1,25 @@
-@import "bootstrap-mincer";
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 
 body {
   background: #f1f1f1;
-  padding-top: 100px;
+}
+
+.navbar-inverse {
+  background: #4285F4;
+  border-color: #4285F4;
+
+  .container-fluid .navbar-brand,
+  .navbar-nav li a {
+    color: white;
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.alert-alert {
+  @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
 }

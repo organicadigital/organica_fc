@@ -1,0 +1,62 @@
+.panel.col-xs-4.col-xs-offset-4[style="margin-top: 100px;"]
+  .panel-heading
+    .panel-title Cadastre-se
+  .panel-body
+    = render "shared/flash"
+
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+
+      - if resource.errors.any?
+        p.alert.alert-danger
+          = raw resource.errors.full_messages.join("<br/>")
+
+      .form-group
+        = f.email_field :email, autocofus: true, class: "form-control", placeholder: "E-mail"
+
+      .form-group
+        = f.password_field :password, class: "form-control", placeholder: "Senha"
+
+      .form-group
+        = f.password_field :password_confirmation, class: "form-control", placeholder: "Confirme a Senha"
+
+
+      .form-group
+        = f.button "Salvar", class: "btn btn-default"
+        | &nbsp;&nbsp;
+
+        = link_to "Login", new_session_path(resource_name)
+
+
+
+
+
+/ <!-- <h2>Sign up</h2>
+
+/ <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+/   <%= devise_error_messages! %>
+
+/   <div class="field">
+/     <%= f.label :email %><br />
+/     <%= f.email_field :email, autofocus: true %>
+/   </div>
+
+/   <div class="field">
+/     <%= f.label :password %>
+/     <% if @validatable %>
+/     <em>(<%= @minimum_password_length %> characters minimum)</em>
+/     <% end %><br />
+/     <%= f.password_field :password, autocomplete: "off" %>
+/   </div>
+
+/   <div class="field">
+/     <%= f.label :password_confirmation %><br />
+/     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+/   </div>
+
+/   <div class="actions">
+/     <%= f.submit "Sign up" %>
+/   </div>
+/ <% end %>
+
+/ <%= render "devise/shared/links" %>
+/  -->

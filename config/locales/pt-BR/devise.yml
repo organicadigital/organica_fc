@@ -1,0 +1,7 @@
+pt-BR:
+  devise:
+    failure:
+      player:
+        invalid: Usuário e/ou senha incorreto(s)
+        not_found_in_database: Usuário e/ou senha incorreto(s)
+        unauthenticated: Faça o Login

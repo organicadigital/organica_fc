@@ -4,6 +4,9 @@ pt-BR:
       game:
         home_player_id: Jogador Casa
         away_player_id: Jogador Fora
+      player:
+        password: Senha
+        password_confirmation: Confirmação da Senha
 
   errors:
     messages:

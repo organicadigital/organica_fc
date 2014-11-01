@@ -1,0 +1,12 @@
+.panel.col-xs-6.col-xs-offset-3
+  .panel-heading
+    .panel-title Jogos
+  .panel-body
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th.text-right Casa
+          th colspan="3"
+          th Fora
+      tbody
+        = render partial: "row", collection: @games_table.all

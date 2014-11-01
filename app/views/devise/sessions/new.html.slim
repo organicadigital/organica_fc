@@ -1,0 +1,17 @@
+.panel.col-xs-4.col-xs-offset-4[style="margin-top: 100px;"]
+  .panel-heading
+    .panel-title Login
+  .panel-body
+    = render "shared/flash"
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-group
+        = f.email_field :email, autofocus: true, class: "form-control", placeholder: "E-mail"
+
+      .form-group
+        = f.password_field :password, class: "form-control", placeholder: "Senha"
+
+      .control-group
+        = f.submit "Entrar", class: "btn btn-default"
+        | &nbsp;&nbsp;
+        = link_to "Cadastre-se", new_registration_path(resource_name)
