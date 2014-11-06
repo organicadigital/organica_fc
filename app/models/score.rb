@@ -10,4 +10,12 @@ class Score < ActiveRecord::Base
   def sg
     @sg ||= gp - gc
   end
+
+  def wins_percent
+    @wins_percent ||= if points > 0
+      100 * (points.to_i / (games * 3 ))
+    else
+      0
+    end
+  end
 end

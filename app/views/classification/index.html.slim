@@ -15,6 +15,7 @@
           th.text-center GP
           th.text-center GC
           th.text-center SG
+          th&nbsp;
       tbody
         - @scores.each_with_index do |s, i|
           tr
@@ -33,3 +34,4 @@
             td.text-center = s.gp
             td.text-center = s.gc
             td.text-center = s.gp - s.gc
+            td.text-center = number_to_percentage(s.wins_percent, precision: 1)
