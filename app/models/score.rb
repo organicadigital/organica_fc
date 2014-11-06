@@ -13,7 +13,7 @@ class Score < ActiveRecord::Base
 
   def wins_percent
     @wins_percent ||= if games > 0
-      100 * (points.to_i / (games * 3 ))
+      100 * (points.to_f / (games.to_f * 3 ))
     else
       0
     end
