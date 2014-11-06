@@ -25,7 +25,7 @@ class GamesTable
   private
     def detect_game(home_id, away_id)
       @games.detect do |r|
-        r.home_player_id = home_id && r.away_player_id == away_id
+        r.home_player_id == home_id && r.away_player_id == away_id
       end
     end
 
