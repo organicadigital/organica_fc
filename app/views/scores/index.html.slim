@@ -1,0 +1,42 @@
+.panel.col-xs-6.col-xs-offset-3
+  .panel-heading
+    .panel-title.pull-left Classificação
+    = link_to "Adicionar Time", {action: :new}, class: "btn btn-sm btn-default pull-right"
+    br
+  .panel-body
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th &nbsp;
+          th Time
+          th.text-center P
+          th.text-center J
+          th.text-center V
+          th.text-center E
+          th.text-center D
+          th.text-center GP
+          th.text-center GC
+          th.text-center SG
+          th&nbsp;
+      tbody
+        - collection.each_with_index do |s, i|
+          tr
+            td.text-center
+              strong = i + 1
+              td title="#{s.team_name}"
+                = link_to action: :edit, id: s do
+                  - if s.team_logo.present?
+                    = image_tag s.team_logo, class: "avatar", width: 20, height: 20
+                    | &nbsp; &nbsp;
+
+                  = s.team_name
+
+              td.text-center = s.points
+              td.text-center = s.games
+              td.text-center = s.wins
+              td.text-center = s.draws
+              td.text-center = s.loses
+              td.text-center = s.gp
+              td.text-center = s.gc
+              td.text-center = s.gp - s.gc
+              td.text-right = number_to_percentage(s.wins_percent, precision: 1)

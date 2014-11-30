@@ -1,12 +1,30 @@
 pt-BR:
   activerecord:
+    models:
+      championship:
+        one: Campeonato
+        other: Campeonatos
+      score:
+        one: Time
+        other: Times
     attributes:
       game:
-        home_player_id: Jogador Casa
-        away_player_id: Jogador Fora
+        home_score_id: Jogador Casa
+        away_score_id: Jogador Fora
+        home_goals: Gols em Casa
+        away_goals: Gols Fora
+        game_date: Data do Jogo
       player:
         password: Senha
         password_confirmation: Confirmação da Senha
+      championship:
+        name: Nome
+      score:
+        team_name: Nome
+        team_logo: Logo
+        players: Jogadores
+        player_ids: Jogadores
+
 
   errors:
     messages:

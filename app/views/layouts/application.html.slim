@@ -4,6 +4,8 @@ html lang="#{I18n.locale}"
     title Orgânica F.C
 
     = stylesheet_link_tag 'application', media: 'all'
+    = favicon_link_tag "ball_16.ico"
+    = favicon_link_tag "ball_16.png", type: "image/png"
     = csrf_meta_tags
   body
     = render "shared/main_menu" if player_signed_in?

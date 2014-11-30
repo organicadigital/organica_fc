@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   devise_for :players
 
-  root to: "classification#index"
+  root to: redirect("/championships")
 
-  controller :games, path: "/games" do
-    get "/", action: :index, as: :games
-    get "/new", action: :new, as: :new_game
-    post "/new", action: :create, as: false
+  resources :championships, only: [:index, :new, :create]
+
+  scope "/:championship_id" do
+    resources :scores, except: [:delete, :show]
+    resources :games, except: [:new, :create, :delete, :show]
   end
 end

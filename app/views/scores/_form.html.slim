@@ -1,0 +1,8 @@
+= simple_form_for resource, url: url_for(resource.persisted? ? {action: :update, id: resource} : {action: :create})  do |f|
+
+  = f.input :team_name
+  = f.input :team_logo
+
+  = f.association :players, collection: players, as: :check_boxes
+
+  = f.button :submit

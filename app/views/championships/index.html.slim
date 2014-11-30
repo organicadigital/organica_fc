@@ -1,0 +1,19 @@
+.panel.col-xs-6.col-xs-offset-3
+  .panel-heading
+    .panel-title.pull-left Campeonatos
+    = link_to "Adicionar", {action: :new}, class: "btn btn-sm btn-default pull-right"
+    br
+  .panel-body
+
+    table.table.table-striped.table-hover
+      tbody
+        - if @championships.any?
+          - @championships.each do |c|
+            tr
+              td
+                = link_to c.name, controller: :scores, championship_id: c
+        - else
+          tr
+            td Nenhum campeonato
+
+

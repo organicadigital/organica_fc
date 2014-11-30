@@ -1,0 +1,21 @@
+tr[class="#{'info' if game.realized?}"]
+  td = game_counter + 1
+  td.text-right title="#{game.home_team_name}"
+    = game.home_team_name
+    - if game.home_team_logo.present?
+      | &nbsp; &nbsp;
+      = image_tag game.home_team_logo, class: "avatar", width: 20, height: 20
+
+  td.text-right = game.home_goals
+
+  td.text-center
+   = link_to "X", {action: :edit, id: game}
+
+  td = game.away_goals
+
+  td.text-left title="#{game.away_team_name}"
+    - if game.away_team_logo.present?
+      = image_tag game.away_team_logo, class: "avatar", width: 20, height: 20
+      | &nbsp; &nbsp;
+
+    = game.away_team_name

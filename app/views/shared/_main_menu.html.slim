@@ -4,9 +4,11 @@
       .navbar-header
         = link_to "Orgânica F.C.", root_path, class: "navbar-brand"
 
-      ul.nav.navbar-nav
-        li = link_to "Pontos", root_path
-        li = link_to "Jogos", games_path
+      - if respond_to?(:parent) && parent.is_a?(Championship)
+        ul.nav.navbar-nav
+          li = link_to parent.name, root_path
+          li = link_to "Pontos", scores_path
+          li = link_to "Jogos", games_path
 
       ul.nav.navbar-nav.pull-right
         li = link_to "Sair", destroy_player_session_path, method: :delete

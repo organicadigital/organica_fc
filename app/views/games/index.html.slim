@@ -5,8 +5,9 @@
     table.table.table-striped.table-hover
       thead
         tr
-          th.text-right Casa
-          th colspan="3"
-          th Fora
+          th width="10%"
+          th.text-right width="30%" Casa
+          th width="30%" colspan="3"
+          th.text-left Fora
       tbody
-        = render partial: "row", collection: @games_table.all
+        = render collection

@@ -3,7 +3,7 @@
 
 
 body {
-  background: #f1f1f1;
+  background: #ECECEC;
 }
 
 .navbar-inverse {
@@ -22,4 +22,17 @@ body {
 
 .alert-alert {
   @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+}
+
+label.checkbox {
+  padding-left: 20px;
+  input {
+    margin-top: -5px;
+    box-shadow: none;
+    width: auto;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
 }

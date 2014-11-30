@@ -1,0 +1,8 @@
+.panel.col-xs-6.col-xs-offset-3
+  .panel-heading
+    .panel-title Novo Campeonato
+  .panel-body
+    = simple_form_for(@championship) do |f|
+      = f.input :name
+      = f.button :submit
+      = link_to "Cancelar", {action: :index}, {class: "btn"}

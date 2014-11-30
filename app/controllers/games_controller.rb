@@ -1,30 +1,21 @@
-class GamesController < ApplicationController
-  def index
-    @games_table = GamesTable.new
-  end
+class GamesController < CrudController
+  belongs_to :championship
 
-  def new
-    @game = Game.new permitted_params
-  end
+  actions :index, :edit, :update
 
-  def create
-    @game = Game.new permitted_params
-
-    if @game.save
-      redirect_to games_path
-    else
-      render :new
+  def update
+    update! do |success, error|
+      success.html { redirect_to action: :index }
+      error.html
     end
   end
 
   private
-    def players
-      @players ||= Player.all
+    def collection
+      super.ordered
     end
 
     def permitted_params
-      params.permit(game: [:home_player_id, :away_player_id, :home_goals, :away_goals])[:game]
+      params.permit(game: [:home_goals, :away_goals, :game_date])
     end
-
-    helper_method :players
 end

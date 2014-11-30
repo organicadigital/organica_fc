@@ -1,52 +1,56 @@
 class ScoreTable
-  def self.update(game)
-    new(game).update
+  def self.update(score)
+    new(score).update
   end
 
-  attr_reader :game
+  attr_reader :score
 
-  delegate :home_player, :away_player, :home_goals, :away_goals,  to: :game
-
-  def initialize(game)
-    @game = game
+  def initialize(score)
+    @score = score
   end
 
-  def home_player_score
-    @home_player_score ||= home_player.score || home_player.build_score
+  def home_games
+    @home_games = score.home_games.realized.to_a
   end
 
-  def away_player_score
-    @away_player_score ||= away_player.score || away_player.build_score
+  def away_games
+    @away_games = score.away_games.realized.to_a
   end
 
+  def games
+    @games ||= home_games + away_games
+  end
+
+  def wins
+    @wins ||= home_games.count { |r| r.home_goals > r.away_goals } +
+              away_games.count { |r| r.home_goals < r.away_goals }
+  end
+
+  def draws
+    @draws ||= games.count { |r| r.home_goals == r.away_goals }
+  end
+
+  def loses
+    @loses = games.count - (wins + draws)
+  end
+
+  def gp
+    @gp ||= home_games.sum(&:home_goals) + away_games.sum(&:away_goals)
+  end
+
+  def gc
+    @gc ||= home_games.sum(&:away_goals) + away_games.sum(&:home_goals)
+  end
 
   def update
-    if home_goals > away_goals
-      home_player_score.points += 3
-      home_player_score.wins += 1
-      away_player_score.loses += 1
-    elsif home_goals < away_goals
-      away_player_score.points += 3
-      away_player_score.wins += 1
-      home_player_score.loses += 1
-    else
-      home_player_score.points += 1
-      away_player_score.points += 1
-      home_player_score.draws += 1
-      away_player_score.draws += 1
-    end
+    score.games = games.count
+    score.points = (wins * 3) + draws
+    score.wins = wins
+    score.draws = draws
+    score.loses = loses
+    score.gp = gp
+    score.gc = gc
 
-    home_player_score.games += 1
-    home_player_score.gp += home_goals
-    home_player_score.gc += away_goals
-
-    away_player_score.games += 1
-    away_player_score.gp += away_goals
-    away_player_score.gc += home_goals
-
-    ActiveRecord::Base.transaction do
-      home_player_score.save!
-      away_player_score.save!
-    end
+    score.save!
   end
 end

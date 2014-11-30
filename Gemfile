@@ -9,6 +9,8 @@ gem 'pg'
 
 gem 'slim-rails'
 gem 'devise'
+gem 'simple_form'
+gem 'inherited_resources', '~> 1.5.1'
 
 gem 'rails_12factor'
 

@@ -1,0 +1,27 @@
+.panel.col-xs-6.col-xs-offset-3
+  .panel-heading
+    .panel-title Jogo
+  .panel-body
+    = simple_form_for resource, url: {action: :update, id: resource} do |f|
+      - if resource.errors.any?
+        p.alert.alert-danger
+          = raw resource.errors.full_messages.join("<br/>")
+        br
+
+      table.table
+        tbody
+          tr
+            td.text-center = resource.home_team_name
+            td.text-center rowspan="2" style="vertical-align: middle;" X
+            td.text-center = resource.away_team_name
+          tr
+            td.text-center
+              = f.text_field :home_goals, class: "text-center"
+            td.text-center
+              = f.text_field :away_goals, class: "text-center"
+
+      = f.input :game_date, as: :string, input_html: {value: l(resource.game_date || Date.today)}
+
+
+      = f.button :submit
+      = link_to "Cancelar", {action: :index}, class: "btn"

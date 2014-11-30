@@ -12,3 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require maskedinput
+
+$(function() {
+  $("#game_game_date").mask("99/99/9999");
+});
