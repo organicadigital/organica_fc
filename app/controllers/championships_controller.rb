@@ -8,7 +8,7 @@ class ChampionshipsController < CrudController
   end
 
   private
-    def collection
+    def end_of_association_chain
       super.recents
     end
 

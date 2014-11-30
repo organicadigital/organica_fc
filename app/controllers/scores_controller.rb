@@ -18,8 +18,8 @@ class ScoresController < CrudController
   end
 
   private
-    def collection
-      super.sorted.all
+    def end_of_association_chain
+      super.sorted
     end
 
     def permitted_params

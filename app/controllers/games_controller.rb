@@ -11,9 +11,10 @@ class GamesController < CrudController
   end
 
   private
-    def collection
-      super.ordered
+    def end_of_association_chain
+      super.ordered.includes(:home_score, :away_score)
     end
+
 
     def permitted_params
       params.permit(game: [:home_goals, :away_goals, :game_date])

@@ -7,6 +7,9 @@ pt-BR:
       score:
         one: Time
         other: Times
+      game:
+        one: Jogo
+        other: Jogos
     attributes:
       game:
         home_score_id: Jogador Casa
