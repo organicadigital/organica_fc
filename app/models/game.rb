@@ -10,7 +10,7 @@ class Game < ActiveRecord::Base
                                                      greater_than_or_equal_to: 0},
                                       on: :update
 
-  # validates :game_date, presence: true, on: :update
+  validates :game_date, presence: true, on: :update
   validate :check_players
 
   after_update :update_score
@@ -33,7 +33,7 @@ class Game < ActiveRecord::Base
 
   private
     def update_score
-      # ScoreTable.update self.home_score
-      # ScoreTable.update self.away_score
+      ScoreTable.update self.home_score
+      ScoreTable.update self.away_score
     end
 end

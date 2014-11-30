@@ -6,7 +6,7 @@ class Score < ActiveRecord::Base
   has_many :home_games, class_name: "Game", foreign_key: :home_score_id
   has_many :away_games, class_name: "Game", foreign_key: :away_score_id
 
-  # validates :team_name, :championship_id, presence: true
+  validates :team_name, :championship_id, presence: true
 
   scope :sorted, lambda { order(points: :desc, wins: :desc)
                           .order("(gp - gc) desc")
