@@ -1,6 +1,7 @@
 class Score < ActiveRecord::Base
   belongs_to :championship
   has_and_belongs_to_many :players
+  belongs_to :player
 
   has_many :home_games, class_name: "Game", foreign_key: :home_score_id
   has_many :away_games, class_name: "Game", foreign_key: :away_score_id
