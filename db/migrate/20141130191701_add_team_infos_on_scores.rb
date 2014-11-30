@@ -4,7 +4,7 @@ class AddTeamInfosOnScores < ActiveRecord::Migration
     add_column :scores, :team_logo, :string
 
     Score.find_each do |s|
-      s.team_name = s.player.acronym
+      s.team_name = s.player.acronym || s.player.email
       s.team_logo = "http://www.gravatar.com/avatar/#{s.player.email_md5}?s=20&d=wavatar"
       s.save
     end
