@@ -11,8 +11,11 @@
       table.table
         tbody
           tr
-            td.text-center = resource.home_team_name
+            td.text-center
+              = resource.home_team_name
+
             td.text-center rowspan="2" style="vertical-align: middle;" X
+
             td.text-center = resource.away_team_name
           tr
             td.text-center
@@ -25,3 +28,5 @@
 
       = f.button :submit
       = link_to "Cancelar", {action: :index}, class: "btn"
+
+      = link_to "Cancelar Jogo", {action: :cancel}, class: "btn btn-danger btn-sm pull-right", data: {confirm: "Tem certeza?", method: :post}

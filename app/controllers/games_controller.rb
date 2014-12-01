@@ -3,6 +3,11 @@ class GamesController < CrudController
 
   actions :index, :edit, :update
 
+  def cancel
+    resource.cancel!
+    redirect_to action: :index
+  end
+
   def update
     update! do |success, error|
       success.html { redirect_to action: :index }

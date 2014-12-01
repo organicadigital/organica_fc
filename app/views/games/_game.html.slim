@@ -9,7 +9,7 @@ tr[class="#{'info' if game.realized?}"]
   td.text-right = game.home_goals
 
   td.text-center
-   = link_to "X", {action: :edit, id: game}
+    = link_to "X", {action: :edit, id: game}
 
   td = game.away_goals
 

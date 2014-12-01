@@ -8,15 +8,20 @@ class Game < ActiveRecord::Base
   validates :home_score_id, uniqueness: {scope: :away_score_id}
   validates :home_goals, :away_goals, numericality: {only_integer: true,
                                                      greater_than_or_equal_to: 0},
-                                      on: :update
+                                      if: :game_date?
 
-  validates :game_date, presence: true, on: :update
   validate :check_players
 
   after_update :update_score
 
   scope :ordered, -> { order(created_at: :asc) }
   scope :realized, -> { where("game_date is not null") }
+
+  def cancel!
+    self.attributes = {game_date: nil, home_goals: nil, away_goals: nil}
+
+    save!
+  end
 
   def check_players
     if home_score_id == away_score_id
