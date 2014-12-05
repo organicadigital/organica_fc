@@ -16,4 +16,22 @@
 
 $(function() {
   $("#game_game_date").mask("99/99/9999");
+
+  var gamesTable = $(".games-table");
+
+  $(".game-filter").on("click", "li a", function() {
+    var $this = $(this)
+      , targetClass = "." + $this.attr('href').substring(1)
+      , trs = gamesTable.find("tr"+targetClass)
+      , parent = $this.parent('li')
+    ;
+
+    parent.addClass('active');
+    parent.siblings().removeClass('active');
+
+    console.info(trs);
+
+    trs.siblings().hide();
+    trs.show();
+  });
 });

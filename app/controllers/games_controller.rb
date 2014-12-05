@@ -20,6 +20,12 @@ class GamesController < CrudController
       super.ordered.includes(:home_score, :away_score)
     end
 
+    def scores
+      @scores ||= parent.scores.name_order
+    end
+
+    helper_method :scores
+
 
     def permitted_params
       params.permit(game: [:home_goals, :away_goals, :game_date])

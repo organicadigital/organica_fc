@@ -12,6 +12,9 @@ class Score < ActiveRecord::Base
                           .order("(gp - gc) desc")
                           .order(gp: :desc) }
 
+
+  scope :name_order, lambda { order(team_name: :asc) }
+
   after_create :generate_games_table
 
   def sg

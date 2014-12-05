@@ -1,4 +1,4 @@
-tr[class="#{'info' if game.realized?}"]
+tr[class="game #{'info' if game.realized?} player-#{game.home_score_id} player-#{game.away_score_id}"]
   td = game_counter + 1
   td.text-right title="#{game.home_team_name}"
     = game.home_team_name
